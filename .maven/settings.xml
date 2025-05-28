@@ -1,17 +1,14 @@
-<?xml version="1.0"?>
-<settings>
-
-  <pluginGroups>
-    <pluginGroup>org.mule.tools</pluginGroup>
-  </pluginGroups>
-
+<?xml version="1.0" encoding="UTF-8"?>
+<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0
+http://maven.apache.org/xsd/settings-1.0.0.xsd">
   <servers>
-    <!-- connected app's required scopes: https://help.salesforce.com/s/articleView?id=001119708&type=1 -->
+    
     <server>
-      <id>Repository</id> <!-- make sure this matches the serverId property in pom.xml -->
+      <id>connectedapp</id>
       <username>~~~Client~~~</username>
-      <password>${client.id}~?~${client.secret}</password> <!-- these come from the build.yml and your github secrets -->
+      <password>fac577a6bd83429583008f1473c78a2c~?~DFdd9CaB8DE14c9EAfB853C3a70Ec5B7</password>
     </server>
   </servers>
-
 </settings>
