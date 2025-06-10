@@ -35,13 +35,13 @@ jobs:
           distribution: zulu
           java-version: 8
 
-      - name: Publish to Exchange
-        run: mvn clean deploy --settings .maven/settings.xml
-
       - name: Deploy to Dev Environment
-        run: mvn clean deploy -DmuleDeploy --settings .maven/settings.xml
-        env:
-          ENV: dev
+        run: |
+          mvn clean deploy -DmuleDeploy \
+            -Denv.ENV=Dev \
+            -Denv.TARGET=Cloudhub-US-East-2 \
+            -Denv.APP_NAME=maven-demo-riddhi-dev \
+            --settings .maven/settings.xml
 
   deploy-manual:
     name: Deploy to Test or Prod (Manual)
@@ -65,10 +65,12 @@ jobs:
           distribution: zulu
           java-version: 8
 
-      - name: Publish to Exchange
-        run: mvn clean deploy --settings .maven/settings.xml
-
       - name: Deploy to ${{ github.event.inputs.environment }} Environment
-        run: mvn clean deploy -DmuleDeploy --settings .maven/settings.xml
-        env:
-          ENV: ${{ github.event.inputs.environment }}
+        run: |
+          TARGET=$(echo ${{ github.event.inputs.environment }} | grep -iq prod && echo Cloudhub-US-East-2 || echo Cloudhub-US-East-2)
+          APP_NAME=maven-demo-riddhi-${{ github.event.inputs.environment }}
+          mvn clean deploy -DmuleDeploy \
+            -Denv.ENV=${{ github.event.inputs.environment }} \
+            -Denv.TARGET=$TARGET \
+            -Denv.APP_NAME=$APP_NAME \
+            --settings .maven/settings.xml
