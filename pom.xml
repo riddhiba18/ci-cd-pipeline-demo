@@ -6,10 +6,10 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>aa6f8212-c55c-4380-aeea-34a9cbd35b5b</groupId>
-	<artifactId>maven-demo</artifactId>
+	<artifactId>maven-demo-1</artifactId>
 	<version>1.0.6</version>
 	<packaging>mule-application</packaging>
-	<name>maven-demo</name>
+	<name>maven-demo-1</name>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
