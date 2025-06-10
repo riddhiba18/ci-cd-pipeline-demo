@@ -43,7 +43,6 @@ jobs:
           mvn clean deploy -DmuleDeploy \
             -Denv.ENV=dev \
             -Denv.TARGET=Cloudhub-US-East-2 \
-            -Denv.APP_NAME=maven-demo-riddhi-dev \
             --settings .maven/settings.xml
 
   deploy-manual:
@@ -77,5 +76,4 @@ jobs:
             -DskipExchangePackage=true \
             -Denv.ENV=${{ github.event.inputs.environment }} \
             -Denv.TARGET=$TARGET \
-            -Denv.APP_NAME=$APP_NAME \
             --settings .maven/settings.xml
