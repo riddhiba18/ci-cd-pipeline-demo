@@ -15,9 +15,9 @@ on:
 
 jobs:
   deploy-dev:
-  name: Publish to Exchange & Deploy to Dev
-  runs-on: ubuntu-latest
-  if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/heads/feature/'))
+    name: Publish to Exchange & Deploy to Dev
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/heads/feature/'))
 
     steps:
       - name: Checkout repository
@@ -50,6 +50,7 @@ jobs:
     name: Deploy to Test or Prod (Manual)
     runs-on: ubuntu-latest
     if: github.event_name == 'workflow_dispatch'
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
