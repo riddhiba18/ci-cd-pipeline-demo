@@ -53,7 +53,7 @@
 						<target>${env.TARGET}</target>
 						<muleVersion>4.9.5</muleVersion>
 						<server>connectedapp</server>
-						<applicationName>${project.artifactId}</applicationName>
+						<applicationName>${project.artifactId}-${env.TARGET}</applicationName>
 						<replicas>1</replicas>
 						<vCores>0.1</vCores>
 						<properties>
