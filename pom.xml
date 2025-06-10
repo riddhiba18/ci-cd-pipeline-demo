@@ -7,7 +7,7 @@
 
 	<groupId>aa6f8212-c55c-4380-aeea-34a9cbd35b5b</groupId>
 	<artifactId>maven-demo-1</artifactId>
-	<version>1.0.8</version>
+	<version>1.0.9</version>
 	<packaging>mule-application</packaging>
 	<name>maven-demo-1</name>
 
