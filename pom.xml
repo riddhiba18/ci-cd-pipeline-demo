@@ -49,11 +49,11 @@
 					<cloudhub2Deployment>
 						<uri>https://anypoint.mulesoft.com</uri>
 						<provider>MC</provider>
-						<environment>Sandbox</environment>
-						<target>Cloudhub-US-East-2</target>
+						<environment>${env.ENV}</environment>
+						<target>${env.TARGET}</target>
 						<muleVersion>4.9.5</muleVersion>
 						<server>connectedapp</server>
-						<applicationName>maven-demo-riddhi</applicationName>
+						<applicationName>${env.APP_NAME}</applicationName>
 						<replicas>1</replicas>
 						<vCores>0.1</vCores>
 						<properties>
@@ -63,10 +63,11 @@
 							<generateDefaultPublicUrl>true</generateDefaultPublicUrl>
 						</deploymentSettings>
 					</cloudhub2Deployment>
+
 				</configuration>
 			</plugin>
 
-			
+
 		</plugins>
 	</build>
 
