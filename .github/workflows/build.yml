@@ -37,7 +37,9 @@ jobs:
           java-version: 8
 
       - name: Publish to Exchange
+        if: startsWith(github.ref, 'refs/heads/feature/')
         run: mvn clean deploy --settings .maven/settings.xml
+
 
       - name: Deploy to dev (CloudHub 2.0)
         run: |
