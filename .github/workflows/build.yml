@@ -38,10 +38,10 @@ jobs:
       - name: Publish to Exchange
         run: mvn clean deploy --settings .maven/settings.xml
 
-      - name: Deploy to Dev (CloudHub 2.0)
+      - name: Deploy to dev (CloudHub 2.0)
         run: |
           mvn clean deploy -DmuleDeploy \
-            -Denv.ENV=Dev \
+            -Denv.ENV=dev \
             -Denv.TARGET=Cloudhub-US-East-2 \
             -Denv.APP_NAME=maven-demo-riddhi-dev \
             --settings .maven/settings.xml
