@@ -15,7 +15,7 @@ on:
 
 jobs:
   deploy-dev:
-    name: Publish to Exchange & Deploy to Dev
+    name: Publish to Exchange & Deploy to dev
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/heads/feature/')
     steps:
@@ -41,9 +41,9 @@ jobs:
       - name: Deploy to Dev Environment (CloudHub 2.0)
         run: |
           mvn clean deploy -DmuleDeploy \
-            -Denv.ENV=Dev \
+            -Denv.ENV=dev \
             -Denv.TARGET=Cloudhub-US-East-2 \
-            -Denv.APP_NAME=maven-demo-riddhi-dev \
+            -Denv.APP_NAME=maven-demo-riddhi1-dev \
             --settings .maven/settings.xml
 
   deploy-manual:
