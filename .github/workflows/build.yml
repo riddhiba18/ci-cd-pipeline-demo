@@ -38,7 +38,7 @@ jobs:
       - name: Deploy to Dev Environment
         run: |
           mvn clean deploy -DmuleDeploy \
-            -Denv.ENV=Dev \
+            -Denv.ENV=dev \
             -Denv.TARGET=Cloudhub-US-East-2 \
             -Denv.APP_NAME=maven-demo-riddhi-dev \
             --settings .maven/settings.xml
