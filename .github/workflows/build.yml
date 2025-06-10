@@ -15,7 +15,7 @@ on:
 
 jobs:
   deploy-dev:
-    name: Publish to Exchange & Deploy to dev
+    name: Publish to Exchange & Deploy to Dev
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/heads/feature/')
     steps:
@@ -38,12 +38,12 @@ jobs:
       - name: Publish to Exchange
         run: mvn clean deploy --settings .maven/settings.xml
 
-      - name: Deploy to Dev Environment (CloudHub 2.0)
+      - name: Deploy to Dev (CloudHub 2.0)
         run: |
           mvn clean deploy -DmuleDeploy \
-            -Denv.ENV=dev \
+            -Denv.ENV=Dev \
             -Denv.TARGET=Cloudhub-US-East-2 \
-            -Denv.APP_NAME=maven-demo-riddhi1-dev \
+            -Denv.APP_NAME=maven-demo-riddhi-dev \
             --settings .maven/settings.xml
 
   deploy-manual:
@@ -68,14 +68,13 @@ jobs:
           distribution: zulu
           java-version: 8
 
-      - name: Publish to Exchange
-        run: mvn clean deploy --settings .maven/settings.xml
-
-      - name: Deploy to ${{ github.event.inputs.environment }} Environment (CloudHub 2.0)
+      # ✅ Skip Exchange publish to avoid duplicate error
+      - name: Deploy to ${{ github.event.inputs.environment }} (CloudHub 2.0)
         run: |
           TARGET=$(echo "${{ github.event.inputs.environment }}" | grep -iq prod && echo Cloudhub-US-East-2 || echo Cloudhub-US-East-2)
           APP_NAME=maven-demo-riddhi-${{ github.event.inputs.environment }}
           mvn clean deploy -DmuleDeploy \
+            -DskipExchangePackage=true \
             -Denv.ENV=${{ github.event.inputs.environment }} \
             -Denv.TARGET=$TARGET \
             -Denv.APP_NAME=$APP_NAME \
